@@ -1,0 +1,67 @@
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp1
+{
+    internal class Calculator
+    {
+        static void Main()
+        {
+            bool keepRunning = true;
+
+            while (keepRunning)
+            {
+                Console.WriteLine("Введите превое число: ");
+                double number1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Введите операцию (+, -, *, /,): ");
+                char operation = Convert.ToChar(Console.ReadLine());
+
+                Console.WriteLine("Введите второе число: ");
+                double number2 = Convert.ToDouble(Console.ReadLine());
+
+                double result = 0;
+
+                switch (operation)
+                {
+                    case '+':
+                        result = number1 + number2;
+                        break;
+                    case '-':
+                        result = number1 - number2;
+                        break;
+                    case '*':
+                        result = number1 * number2;
+                        break;
+                    case '/':
+                        if (number2 != 0)
+                        {
+                            result = number1 / number2;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка: нельзя делить на ноль! ");
+                            continue;
+                        }
+
+                        break;
+
+                    default:
+
+                        Console.WriteLine("Ошибка: Неверная операция!");
+                        continue;
+                }
+
+                Console.WriteLine("Результат: " + result);
+
+                Console.WriteLine("Хотите продолжить? (да/нет): ");
+                string answer = Console.ReadLine().ToLower();
+
+                if (answer != "да")
+                {
+                    keepRunning = false; // если ответ "да", то завершаем цикл
+                }
+            }
+        }
+    }
+}
